@@ -25,7 +25,6 @@ def signup(request): #20221018 문규빈 회원가입 기능
             print("1")
             return render (request, 'signup.html', {'error' : '입력창을 확인해주십시오.'})
             
-        
         if User.objects.filter(username = user.username).exists(): #아이디 중복체크 
             print(user.username)
             return render (request, 'signup.html',{'error' : '사용할 수 없는 아이디 입니다.'})
