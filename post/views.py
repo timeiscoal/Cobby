@@ -1,4 +1,3 @@
-
 from django.shortcuts import HttpResponse, render, redirect
 from django.http import HttpResponse
 from post.models import Comment

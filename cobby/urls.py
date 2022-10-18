@@ -22,5 +22,4 @@ urlpatterns = [
     path('comment/', include('post.urls')),
     path('', include('user.urls')),
     path('', views.index, name='index'),  # '/' 에 해당되는 path
-
 ]

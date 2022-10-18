@@ -135,3 +135,6 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 AUTH_USER_MODEL = 'user.User'
 
+# 221018 최해민 Makgeolli 모델 이미지필드 생성
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
