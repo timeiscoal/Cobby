@@ -1,3 +1,11 @@
+
+from django.shortcuts import render , redirect
+
+
+def index(request):
+    page = request.GET.get('page', '1')  # 메인페이지
+    return render(request, 'user/index.html')      
+
 from django.shortcuts import render,redirect
 from user.models import User
 
@@ -27,3 +35,4 @@ def signup(request): #20221018 문규빈 회원가입 기능
             user.save()
             
             return redirect('/login/')
+
