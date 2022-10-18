@@ -22,5 +22,11 @@ def create_comment(request):
         
         return HttpResponse("완료")
 
+def edit(request, pk):
+    post = Comment.objects.get(pk=pk)             
+    context = {                                         
+        'comment': comment,
+    }
+    return render(request, 'comment_edit.html', context)
 
        
