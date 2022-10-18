@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        {% for makgeolli in makgeolli_list %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{ makgeolli.image.url }}" class="card-img-top" alt="{{ makgeolli.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ makgeolli.name }}</h5>
+                <p class="card-text">{{ makgeolli.desc }}</p>
+                <a href="{% url 'makgeolli:detail' makgeolli.id %}" class="btn btn-primary">상세보기</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

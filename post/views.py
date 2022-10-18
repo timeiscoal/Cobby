@@ -1,4 +1,3 @@
-
 from django.shortcuts import HttpResponse, render, redirect
 from django.http import HttpResponse
 from post.models import Comment
@@ -67,5 +66,4 @@ def Post_search(request):
         post_list = post_list.filter(title__icontains=search)
         print(post_list)
     return render(request, 'post/post_search.html', {'Post_search' : post_list})
-
 

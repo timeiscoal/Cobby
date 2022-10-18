@@ -16,11 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from user import views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('comment/', include('post.urls')),
     path('', include('user.urls')),
     path('', views.index, name='index'),  # '/' 에 해당되는 path
-
-]
+    path('', include('makgeolli.urls')),
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
