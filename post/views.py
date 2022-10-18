@@ -67,4 +67,3 @@ def Post_search(request):
         print(post_list)
     return render(request, 'post/post_search.html', {'Post_search' : post_list})
 
-

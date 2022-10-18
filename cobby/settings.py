@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,8 +41,9 @@ INSTALLED_APPS = [
     # 규민,소민
     'user',
     # 2022.10.17 신욱 ,혜림
-    'post'
-
+    'post',
+    # 20221018 최해민 추가
+    'makgeolli',
 ]
 
 MIDDLEWARE = [
@@ -136,5 +137,6 @@ LOGOUT_REDIRECT_URL = '/'
 AUTH_USER_MODEL = 'user.User'
 
 # 221018 최해민 Makgeolli 모델 이미지필드 생성
-MEDIA_ROOT = BASE_DIR / 'media'
+# MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
