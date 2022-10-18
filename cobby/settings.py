@@ -37,13 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # 규민,소민
+    # 규빈
     'user',
-    # 2022.10.17 신욱 ,혜림
-    'post',
+
     # 20221018 최해민 추가
     'makgeolli',
+
+    # 2022.10.17 최신욱 댓글 삭제 기능, 게시글 검색 기능 app 추가.
+    'post'
+
 ]
 
 MIDDLEWARE = [
