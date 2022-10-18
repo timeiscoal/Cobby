@@ -1,4 +1,5 @@
 from django.db import models
+
 #from users.models import User
 
 class Comment(models.Model):
@@ -8,3 +9,4 @@ class Comment(models.Model):
     
     def __str__(self):
         return str(self.content)
+
