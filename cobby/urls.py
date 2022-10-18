@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('comment/', include('post.urls')),
+    path('', include('post.urls')),
     path('', include('user.urls')),
     path('', views.index, name='index'),  # '/' 에 해당되는 path
     path('', include('makgeolli.urls')),
