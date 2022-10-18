@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     # 규민,소민
     'user',
     # 2022.10.17 신욱 ,혜림
-    'post'
+    'post',
 
 ]
 

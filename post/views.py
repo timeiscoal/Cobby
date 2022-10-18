@@ -6,11 +6,11 @@ from post.models import Comment
 
 def create_comment(request):
     if request.method == 'GET':
-        #user = request.user.is_authenticated
-        #if user:
-        return render(request, 'create_comment.html')
-        #else:
-            #return HttpResponse("로그인 후 이용해주세요")
+        user = request.user.is_authenticated
+        if user:
+            return render(request, 'create_comment.html')
+        else:
+            return HttpResponse("로그인 후 이용해주세요")
     
     elif request.method == 'POST':
         user = request.user
@@ -18,7 +18,7 @@ def create_comment(request):
         contents.author = user
         contents.content = request.POST.get('content','')
         contents.save()
-        print(contents)
+        #print(contents)
         
         return HttpResponse("완료")
 
