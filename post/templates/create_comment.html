@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>댓글 작성페이지</h1>
+    <form action="{% url 'post:create_comment' %}" method="POST">
+        {% csrf_token %}
+        <textarea name="content" id="content" cols="30" rows="10"  placeholder="content"></textarea>
+        <input type="submit" />
+</body>
+</html>
+
+

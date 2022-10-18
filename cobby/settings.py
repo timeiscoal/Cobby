@@ -37,8 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
+    # 규민,소민
     'user',
+    # 2022.10.17 신욱 ,혜림
+    'post'
+
 ]
 
 MIDDLEWARE = [
@@ -56,7 +60,7 @@ ROOT_URLCONF = 'cobby.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR /'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,4 +128,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+# 로그인 성공후 이동하는 URL
+LOGIN_REDIRECT_URL = '/'
+# 로그아웃시 이동하는 URL
+LOGOUT_REDIRECT_URL = '/'
 AUTH_USER_MODEL = 'user.User'
+
