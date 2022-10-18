@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+        *{
+            box-sizing:border-box;
+            margin:0;
+            padding:0;
+        }
+
+        body{
+            background:#fafafa;
+        }
+
+        ol, ul {
+            list-style:none;   
+        }
+
+        p, span, div, a{
+            font-family: sans-serif;
+        }
+
+        button{
+            border:none;
+        }
+
+        a{
+            color:#000;
+            text-decoration:none;
+        }
+
+        button{
+            background: none;
+            cursor: pointer;
+        }
+
+        h1{
+            color:#262626;
+            font-family:'Lobster', cursive;
+            font-weight:100;
+            line-height: 1; 
+        }
+
+        input, textarea{
+            outline:none;
+        }
+
+        .comments{
+            margin : auto;
+            justify-content: center;
+        }
+
+        .txt_id{
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 0.5rem 1rem 0.5rem 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div style="width: 80%;" class="container">
+        <div class="row fs-1">
+            <p>{{ makgeolli.name }}</p>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <img style='max-width:50%; 'class="rounded img-responsive mx-auto d-block" src="{{ makgeolli.image.url }}" alt="{{ makgeolli.name }}">
+            </div>
+        </div>
+        <div class="row">
+            <br>
+        </div>
+        <div class="row fs-5">
+            <div class="col">
+                <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis pariatur voluptas recusandae ullam accusamus neque impedit inventore, perspiciatis deleniti officia voluptates. Iusto ullam eaque architecto dicta sit, accusamus impedit aperiam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor accusantium architecto nihil voluptate magni hic consequatur. Dolor quaerat itaque facere, soluta ab impedit, alias laborum ratione sit perspiciatis commodi ducimus!</p>
+            </div>
+        </div>
+        <div class="row">
+            <hr>
+        </div>
+    
+    
+
+        <!--#################################-->
+        <div class="comments">
+            <div id="listComment" class="list_comment">
+                <p class="txt_comment">
+                    <span>
+                        <a href="#n" class="txt_id">Nol_bu</a>
+                        <span>아무거나 먹어도 맛있답니다.</span>
+                    </span>
+                    <i style="color: green; margin-left: 1rem;" class="bi bi-pencil-square"></i>
+                    <i style="color: red; margin-left: 1rem;"class="bi bi-x-square"></i>
+                </p>
+            </div>
+        </div><!-- comments div end -->
+        
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="댓글을 입력해주세요." aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">작성</button>
+        </div>
+    </div><!-- container div end -->
+
+</body>
+</html>

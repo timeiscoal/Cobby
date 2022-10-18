@@ -1,6 +1,4 @@
-
-from nturl2path import url2pathname
-from django.urls import path, include
+from django.urls import path
 from post import views
 
 app_name = 'post'

@@ -1,5 +1,8 @@
 from django.db import models
+
 from user.models import User
+#from users.models import User
+
 
 class Comment(models.Model):
     content = models.CharField(max_length=80)
