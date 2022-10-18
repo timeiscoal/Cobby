@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # 2022.10.17 최신욱 댓글 삭제 기능, 게시글 검색 기능 app 추가.
     'post'
 
+
 ]
 
 MIDDLEWARE = [
