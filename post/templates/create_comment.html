@@ -5,9 +5,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>댓글 작성페이지</h1>
+    <h2>댓글 수정페이지</h2>
     <form action="{% url 'post:create_comment' %}" method="POST">
-        {% csrf_token %}
         <textarea name="content" id="content" cols="30" rows="10"  placeholder="content"></textarea>
         <input type="submit" />
 </body>
