@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from makgeolli.models import Makgeolli
 import easyocr
@@ -15,8 +15,12 @@ def makgeolli_detail(request, id):
 # 221019 최해민 EasyOCR 추가
 def cobby(request):
     reader = easyocr.Reader(['ko'], gpu=True) # 'ko' : 한글로 설정
-    result_list = reader.readtext('media/makgeolli/result1.png')
-    name = ''
+    result_list = reader.readtext('media/makgeolli/장수.png')
+    
+    name = '' # 찾은 text들을 다 더할 빈 문자열
     for result in result_list:
-        name += result[1]
-    return HttpResponse(f'{name}')
+        name += result[1] # text들을 name에 다 더해준다.
+    mak_list = Makgeolli.objects.all()
+    for mak in mak_list:
+        if mak.name in name:
+            return redirect(f'/makgeolli/{mak.id}')
