@@ -108,12 +108,15 @@
   </head>
   <body>
     <main>
+      <form method="post" action="{% url 'user:login' %}">
+        {% csrf_token %}
       <p class="signup_text">회원가입</p>
       <section class="main_box">
         <div class="img"></div>
         <div class="box">
           <input class="id_box" placeholder="아이디" type="text" />
           <button class="button">중복확인</button>
+          <label for="password">비밀번호</label>
           <input class="password" placeholder="비밀번호" type="password" />
           <div class="email_box">
             <input class="email" placeholder="이메일 주소" type="email" />

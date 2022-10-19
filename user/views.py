@@ -12,7 +12,7 @@ from user.models import User
 # Create your views here.
 def signup(request): #20221018 문규빈 회원가입 기능
     if request.method == 'GET':
-        return render(request, 'signup.html')
+        return render(request, 'user/signup.html')
     
     if request.method == 'POST':
         user = User()
