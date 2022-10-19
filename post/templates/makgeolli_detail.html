@@ -91,22 +91,28 @@
     
 
         <!--#################################-->
+        {{Makgeolli.comment_set.all}}
+        {% for comment in Makgeolli.comment_set.all %}
+        <h4>제목: {{ comment.user }}</h4>
+        <h4>내용: {{ comment.content }}</h4>
         <div class="comments">
             <div id="listComment" class="list_comment">
-                <p class="txt_comment">
+                <form action="{% url 'post:create_comment' %}" method="POST">
+                    {% csrf_token %}
+                    <p class="txt_comment">
                     <span>
                         <a href="#n" class="txt_id">Nol_bu</a>
                         <span>아무거나 먹어도 맛있답니다.</span>
                     </span>
                     <i style="color: green; margin-left: 1rem;" class="bi bi-pencil-square"></i>
                     <i style="color: red; margin-left: 1rem;"class="bi bi-x-square"></i>
-                </p>
+                    </p>
             </div>
         </div><!-- comments div end -->
-        
+        {% endfor %}
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="댓글을 입력해주세요." aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">작성</button>
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">작성</button>
         </div>
     </div><!-- container div end -->
 

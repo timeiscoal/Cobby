@@ -7,6 +7,6 @@ urlpatterns = [
     path('post/', views.Post_search, name='post_search'),
     path('delete/<int:id>/', views.Comment_delete, name='delete'),
     path('comment/', views.create_comment, name= 'create_comment'), 
-    #path('<int:pk>/edit/', views.edit, name = 'edit'),
+    path('<int:pk>/edit/', views.edit, name = 'edit'),
 
 ]

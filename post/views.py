@@ -2,14 +2,14 @@ from django.shortcuts import HttpResponse, render, redirect
 from django.http import HttpResponse
 from post.models import Comment
 
-
+# 장혜림_댓글 작성 함수 
 def create_comment(request):
     if request.method == 'GET':
-        user = request.user.is_authenticated
-        if user:
-            return render(request, 'create_comment.html')
-        else:
-            return HttpResponse("로그인 후 이용해주세요")
+        #user = request.user.is_authenticated
+        #if user:
+            return render(request, 'makgeolli_detail.html')
+        #else:
+            #return HttpResponse("로그인 후 이용해주세요")
     
     elif request.method == 'POST':
         user = request.user
@@ -17,10 +17,9 @@ def create_comment(request):
         contents.author = user
         contents.content = request.POST.get('content','')
         contents.save()
-        #print(contents)
-        
-        return HttpResponse("완료")
+        return render(request, 'makgeolli_detail.html')
 
+# 장혜림_댓글 수정 함수
 def edit(request, pk):
     post = Comment.objects.get(pk=pk)             
     context = {                                         
@@ -31,6 +30,7 @@ def edit(request, pk):
 
 def Comment_delete(request,pk):
     Comments = Comment.objects.get(pk=pk)
+    
     """ 
     2022.10.17 최신욱
     댓글 삭제 함수입니다.
