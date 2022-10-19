@@ -13,6 +13,7 @@ from user.models import User
 def signup(request): #20221018 문규빈 회원가입 기능
     if request.method == 'GET':
         return render(request, 'user/signup.html') #셋팅에 따라 형식이 바뀔 수 있음
+
     
     if request.method == 'POST':
         user = User()
