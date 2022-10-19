@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>댓글 수정</title>
+</head>
+<style>
+    @font-face {
+        font-family: "WandohopeB";
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+      .container{
+        position : absolute;
+        top : 20%;
+        left : 20%;
+        margin : -50px 0 0 -50px;
+
+
+      }
+</style>
+<body>
+    <!DOCTYPE html>
+    <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>board</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}" href="../../css/style.css"></link>
+    </head>
+    <body>
+        <div class="container">
+            <img src = "image.png">
+            <h2>댓글 수정페이지</h2>
+            <form action="{% url 'post:comment_edit' content.id %}" method="POST">
+                {% csrf_token %}
+                <table class="board_detail">
+                    <tr>
+                        <td colspan="2">
+                            <textarea id="contents" name="contents"> </textarea>
+                        </td>
+                    </tr>
+                </table>
+                <input type="submit" id="submit" value="저장" class="btn">
+            </form>
+        </div>
+    </body>
+    </html>
+</body>
+</html>
