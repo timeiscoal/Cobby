@@ -32,12 +32,12 @@
         <div class="container">
             <img src = "image.png">
             <h2>댓글 수정페이지</h2>
-            <form action="{% url 'post:comment_edit' %}" method="POST">
-            <form id="frm" name="frm" method="post" action="/board/insertBoard.do">
+            <form action="{% url 'post:comment_edit' content.id %}" method="POST">
+                {% csrf_token %}
                 <table class="board_detail">
                     <tr>
                         <td colspan="2">
-                            <textarea id="contents" name="contents"></textarea>
+                            <textarea id="contents" name="contents"> </textarea>
                         </td>
                     </tr>
                 </table>
