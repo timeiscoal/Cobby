@@ -85,15 +85,16 @@
   <body>
     <div class="ui">
       .
+      <form action="{% url 'post:post_search' %}" method='GET'>
       <div class="ui_search">
         <input
           type="search"
           placeholder="막걸리 이름 검색하기"
           class="search"
         />
-        <button>검색</button>
+        <button type="submit"></button>">검색</button>
       </div>
-
+      </form>
       <div>
         <input type="file" class="img_file" />
       </div>
