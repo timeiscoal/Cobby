@@ -154,12 +154,14 @@
                         <a href="#n" class="txt_id"> {{comment.author}} </a>
                         <span>{{comment.content}}</span>
                     </span>
+                    {% if comment.author == request.user %}
                     <div class="bi bi-pencil-square" style="color: green; margin-left: 1rem;" onclick="location.href='{% url 'post:comment_edit' comment.id %}';">
                         <method="POST">
                             {% csrf_token %}
                     </div>
                     <i style="color: red; margin-left: 1rem;"class="bi bi-x-square" onclick="location.href='{% url 'post:delete' comment.id %}';"></i>
                     </p>
+                    {% endif %}
             </div>
         </div><!-- comments div end -->
         {% endfor %}

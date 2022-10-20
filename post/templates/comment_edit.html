@@ -7,18 +7,40 @@
 <style>
     @font-face {
         font-family: "WandohopeB";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/WandohopeB.woff")
           format("woff");
         font-weight: normal;
         font-style: normal;
       }
       .container{
+        font-family: "WandohopeB";
         position : absolute;
         top : 20%;
         left : 20%;
         margin : -50px 0 0 -50px;
-
-
+        margin-left : 15%;
       }
+      .image{
+        margin-top : 20px;
+      }
+      .text{
+        height : 80px;
+        width : 400px;
+      }
+      .btn{
+        margin-top : 3px;
+        margin-left : 87%;
+        width: 50px;
+        height: 35px;
+        color: rgb(53, 53, 53);
+        border: 2px;
+        border-radius : 5px
+        cursor: pointer;
+      }
+      .btn:hover{
+        border : 1px solid darkgray;
+      }
+   
 </style>
 <body>
     <!DOCTYPE html>
@@ -30,18 +52,19 @@
     </head>
     <body>
         <div class="container">
-            <img src = "image.png">
-            <h2>댓글 수정페이지</h2>
+            <h1>댓글 수정페이지</h1>
+            <img class="image" src="/static/imgs/image.png" />
             <form action="{% url 'post:comment_edit' content.id %}" method="POST">
                 {% csrf_token %}
                 <table class="board_detail">
                     <tr>
                         <td colspan="2">
-                            <textarea id="contents" name="contents"> </textarea>
+                            <textarea class="text" id="contents" name="contents"> </textarea>
                         </td>
                     </tr>
                 </table>
                 <input type="submit" id="submit" value="저장" class="btn">
+                
             </form>
         </div>
     </body>
