@@ -31,10 +31,11 @@
     }
     .ui_login {
       background: rgb(199, 199, 199);
+      height: 40px;
       width: 150px;
       position: absolute;
       left: 80%;
-      top: 4%;
+      margin-top: 10px;
     }
     .ui_login > a {
       color: black;
@@ -47,14 +48,13 @@
     .korea {
       position: absolute;
       width: 500px;
-      left: 55%;
-      margin-top: 20px;
+      left: 60%;
     }
     .title {
       font-family: "WandohopeB";
       font-size: 40px;
       position: absolute;
-      left: 27%;
+      left: 10%;
       width: 40%;
       top: 20%;
       writing-mode: vertical-lr;
@@ -77,22 +77,29 @@
       margin-top: 50px;
     }
 
-    .search_icon {
-      width: 50px;
-      height: 50px;
-      background: url(/static/imgs/search.png) no-repeat center;
-      background-size: contain;
-      border: none;
-      margin-left: 50%;
-      margin-top: 12px;
-      cursor: pointer;
+    input[type="file"]::file-selector-button {
+      width: 100px;
+      height: 40px;
     }
   </style>
   <body>
     <div class="ui">
-      <a href="{% url 'user:upload' %}">
-        <button class="search_icon"></button
-      ></a>
+      .
+      <form action="" method='POST'>
+        {% csrf_token %}
+      <div class="ui_search">
+        <input
+          type="search"
+          placeholder="막걸리 이름 검색하기"
+          class="search"
+        />
+        <button type="submit"></button>">검색</button>
+      </div>
+      </form>
+      <div>
+        <input type="file" class="img_file" />
+      </div>
+
       <div class="ui_login">
         {% if user.is_authenticated %}
         <a class="nav-link" href="{% url 'user:logout' %}"
@@ -105,9 +112,11 @@
     </div>
 
     <div class="borad">
+      .
       <div class="korea">
         <img src="static/imgs/korea.jpg" width="70%" />
       </div>
+      .
       <div class="title">
         <img class="img2" src="/static/imgs/img2.png" />
         <p><strong>코</strong>가<strong>삐</strong>뚤어지게</p>
