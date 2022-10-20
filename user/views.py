@@ -1,6 +1,8 @@
-
+from django.http import HttpResponse
 from django.shortcuts import render , redirect
-
+from makgeolli.models import Cobby, Makgeolli
+import easyocr
+from urllib import parse
 
 def index(request):
     page = request.GET.get('page', '1')  # 메인페이지
@@ -40,3 +42,24 @@ def signup(request): #20221018 문규빈 회원가입 기능
             return redirect('/login/')
         
 
+# 221019 최해민 upload, EasyOCR 추가
+def upload(request):
+    if request.method == 'GET':
+        return render(request, 'user/base.html')
+    
+    if request.method == 'POST':
+        file = request.FILES['product_image']
+        new_file = Cobby()
+        new_file.image = file
+        new_file.save()
+    
+        reader = easyocr.Reader(['ko'], gpu=True) # 'ko' : 한글로 설정
+        result_list = reader.readtext(parse.unquote(new_file.image.url[1:]))
+    
+        name = '' # 찾은 text들을 다 더할 빈 문자열
+        for result in result_list:
+            name += result[1] # text들을 name에 다 더해준다.
+        mak_list = Makgeolli.objects.all()
+        for mak in mak_list:
+            if mak.name in name:
+                return redirect(f'/makgeolli/{mak.id}')
