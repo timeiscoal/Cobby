@@ -135,12 +135,14 @@
             <div id="listComment" class="list_comment">
                     <p class="txt_comment">
                     <span>
-                        <a href="#" class="txt_id"> {{comment.author}} </a>
+                        <a href="#n" class="txt_id"> {{comment.author}} </a>
                         <span>{{comment.content}}</span>
                     </span>
                     {% if comment.author == request.user %}
-                    <i class="bi bi-pencil-square" style="color: green; margin-left: 1rem;" onclick="location.href='{% url 'post:comment_edit' comment.id %}';">
-                    </i>
+                    <div class="bi bi-pencil-square" style="color: green; margin-left: 1rem;" onclick="location.href='{% url 'post:comment_edit' comment.id %}';">
+                        <method="POST">
+                            {% csrf_token %}
+                    </div>
                     <i style="color: red; margin-left: 1rem;"class="bi bi-x-square" onclick="location.href='{% url 'post:delete' comment.id %}';"></i>
                     </p>
                     {% endif %}
@@ -148,7 +150,7 @@
         </div><!-- comments div end -->
         {% endfor %}
         <div class="input-group mb-3">
-            <form class="d-flex" action="{% url 'post:create_comment' makgeolli.id %}" method="POST">
+            <form action="{% url 'post:create_comment' makgeolli.id %}" method="POST">
                 {% csrf_token %}
             <input name = "content" type="text" class="form-control" placeholder="댓글을 입력해주세요." aria-describedby="button-addon2">
             
@@ -157,6 +159,39 @@
             </form>
 
         </div>
+      </div>
+      <!-- comments div end -->
+
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="댓글을 입력해주세요."
+          aria-describedby="button-addon2"
+        />
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          id="button-addon2"
+        >
+          작성
+        </button>
+
+
+      </div>
+    </div><!-- comments div end -->
+    {% endfor %}
+    <div class="input-group mb-3">
+      <form class="d-flex" action="{% url 'post:create_comment' makgeolli.id %}" method="POST">
+        {% csrf_token %}
+        <input name="content" type="text" class="form-control" placeholder="댓글을 입력해주세요."
+          aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">작성</button>
+      </form>
+
+    </div>
+  </div>
+  <!-- comments div end -->
   </div>
   <!-- container div end -->
 </body>

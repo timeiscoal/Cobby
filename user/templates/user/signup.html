@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>signup</title>
+  <style>
+    @font-face {
+      font-family: "WandohopeB";
+      src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/WandohopeB.woff") format("woff");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      margin: 0 auto;
+    }
+
+    main {
+      margin-top: 60px;
+      margin-bottom: 50px;
+      display: flex;
+    }
+
+    .signup_text {
+      font-size: 45pt;
+      margin-bottom: 30px;
+      color: rgb(61, 61, 61);
+      font-family: "WandohopeB";
+      writing-mode: vertical-lr;
+      margin-right: -13%;
+      margin-top: 5%;
+    }
+
+    .main_box {
+      width: 1000px;
+      height: 450px;
+
+    }
+
+    .img {
+      width: 250px;
+      height: 250px;
+      background: url(/static/imgs/image.png) no-repeat center;
+      background-size: cover;
+    }
+
+    .box {
+      width: 470px;
+    }
+
+    .id_box {
+      width: 440px;
+      height: 30px;
+      margin-top: 5%;
+      border: 2px solid rgb(136, 136, 136);
+      padding-left: 3%;
+    }
+
+    .password {
+      width: 440px;
+      height: 30px;
+      margin-left: auto;
+      margin-top: 5%;
+      border: 2px solid rgb(136, 136, 136);
+      padding-left: 3%;
+    }
+
+    .email_box {
+      margin-top: 5%;
+    }
+
+    .email_box>p {
+      font-size: 15pt;
+      color: rgb(88, 88, 88);
+    }
+
+    .email {
+      width: 440px;
+      height: 30px;
+      border: 2px solid rgb(136, 136, 136);
+      padding-left: 3%;
+    }
+
+    .phone {
+      width: 440px;
+      height: 30px;
+      margin-top: 5%;
+      border: 2px solid rgb(136, 136, 136);
+      padding-left: 3%;
+    }
+
+    .signup {
+      width: 250px;
+      height: 35px;
+      font-family: "WandohopeB";
+      color: rgb(53, 53, 53);
+      margin-left: 5%;
+      border: 2px solid rgb(136, 136, 136);
+      margin-top: 10%;
+      margin-left: 25%;
+      cursor: pointer;
+    }
+
+    .error {
+      border: 1px solid none;
+      border-radius: 1rem;
+      text-align: center;
+      padding: 1rem;
+      background-color: rgb(255, 0, 0, .6);
+      color: #ffffff;
+      margin-bottom: 1rem;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <p class="signup_text">회원가입</p>
+    <section class="main_box">
+      <div class="img"></div>
+      {% comment %} input 에 name 값 확인하기.. {% endcomment %}
+        <div class="box"> 
+          <form action="{% url 'user:signup' %}" method="post">
+          {% csrf_token %}
+          <input class="id_box" placeholder="아이디" type="text" / name="username">
+          <input class="password" placeholder="비밀번호" type="password" name="password"/>
+          <div class="email_box">
+            <input class="email" placeholder="이메일 주소" type="email" name="email"/>
+
+          </div>
+          <input class="phone" placeholder="휴대폰 번호" type="tel" name="phonenum"/>
+
+          <button class="signup" type="submit">가입하기</button>
+        </div>
+      </form>
+      {% if error %}
+      <div class="error">
+        {{ error }}
+      </div>
+      {% endif %}
+
+    </section>
+  </main>
+</body>
+
+</html>

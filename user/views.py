@@ -5,7 +5,7 @@ import easyocr
 from urllib import parse
 
 def index(request):
-    page = request.GET.get('page')  # 메인페이지
+    page = request.GET.get('page', '1')  # 메인페이지
     return render(request, 'user/index.html')      
 
 from django.shortcuts import render,redirect
