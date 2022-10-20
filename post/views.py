@@ -86,5 +86,6 @@ def Post_search(request):
     if search :
         post_list = post_list.filter(name__icontains=search)
         post_id = post_list.values()[0]['id']
+        print(post_id)
     return redirect(f'/makgeolli/{post_id}')
     # <최종적으로 해당 지평생막걸리 페이지로 바로 이동.>
