@@ -129,22 +129,55 @@
     </div>
 
 
-    <!--#################################-->
+       
+        {% for comment in makgeolli.comment_set.all %}
+        <div class="comments">
+            <div id="listComment" class="list_comment">
+                    <p class="txt_comment">
+                    <span>
+                        <a href="#n" class="txt_id"> {{comment.author}} </a>
+                        <span>{{comment.content}}</span>
+                    </span>
+                    {% if comment.author == request.user %}
+                    <div class="bi bi-pencil-square" style="color: green; margin-left: 1rem;" onclick="location.href='{% url 'post:comment_edit' comment.id %}';">
+                        <method="POST">
+                            {% csrf_token %}
+                    </div>
+                    <i style="color: red; margin-left: 1rem;"class="bi bi-x-square" onclick="location.href='{% url 'post:delete' comment.id %}';"></i>
+                    </p>
+                    {% endif %}
+            </div>
+        </div><!-- comments div end -->
+        {% endfor %}
+        <div class="input-group mb-3">
+            <form action="{% url 'post:create_comment' makgeolli.id %}" method="POST">
+                {% csrf_token %}
+            <input name = "content" type="text" class="form-control" placeholder="댓글을 입력해주세요." aria-describedby="button-addon2">
+            
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">작성</button>
+            
+            </form>
 
-    {% for comment in makgeolli.comment_set.all %}
-    <div class="comments">
-      <div id="listComment" class="list_comment">
-        <p class="txt_comment">
-          <span>
-            <a href="#" class="txt_id"> {{comment.author}} </a>
-            <span>{{comment.content}}</span>
-          </span>
-          <i class="bi bi-pencil-square" style="color: green; margin-left: 1rem;"
-            onclick="location.href='{% url 'post:comment_edit' comment.id %}';">
-          </i>
-          <i style="color: red; margin-left: 1rem;" class="bi bi-x-square"
-            onclick="location.href='{% url 'post:delete' comment.id %}';"></i>
-        </p>
+        </div>
+      </div>
+      <!-- comments div end -->
+
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="댓글을 입력해주세요."
+          aria-describedby="button-addon2"
+        />
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          id="button-addon2"
+        >
+          작성
+        </button>
+
+
       </div>
     </div><!-- comments div end -->
     {% endfor %}
