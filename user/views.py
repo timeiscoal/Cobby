@@ -1,8 +1,8 @@
-from django.http import HttpResponse
 from django.shortcuts import render , redirect
 from makgeolli.models import Cobby, Makgeolli
 import easyocr
 from urllib import parse
+from pprint import pprint
 
 def index(request):
     page = request.GET.get('page', '1')  # 메인페이지
@@ -55,6 +55,7 @@ def upload(request):
     
         reader = easyocr.Reader(['ko'], gpu=True) # 'ko' : 한글로 설정
         result_list = reader.readtext(parse.unquote(new_file.image.url[1:]))
+        pprint(result_list)
     
         name = '' # 찾은 text들을 다 더할 빈 문자열
         for result in result_list:
