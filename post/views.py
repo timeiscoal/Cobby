@@ -81,13 +81,12 @@ def Post_search(request):
             검색을 요청한 사용자의 입력 값이 title=search 일치한다면, 일치하는 정보들만 post_search.html를 rander합니다.
     """
 
-    
+    post_list = Comment.objects.all()
     # print(post_list)
+    search = request.GET.get('search' ,'')
     # print(search)
-    if request.method == 'GET':
-        search = request.GET['searched']
-        post_list = Makgeolli.objects.all()
-        post_list = post_list.filter(name__icontains=search)
+    if search :
+        post_list = post_list.filter(title__icontains=search)
         print(post_list)
-    return render(request, 'makgeolli/makgeolli_detail.html', {'Post_search' : post_list})
+    return render(request, 'post/post_search.html', {'Post_search' : post_list})
 
