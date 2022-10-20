@@ -125,13 +125,15 @@
   <body>
     <div class="ui">
       <div class="ui_search">
+        <form action="{% url 'post:post_search' %}" method="GET">
         <input
           type="search"
+          name='search'
           placeholder="막걸리 이름 검색하기"
           class="search"
         />
-        <button class="button1">검색</button>
-
+        <button type="submit" class="button1">검색</button>
+        </form>
         <div class="form-group">
           <form
             action="{% url 'user:upload' %}"
