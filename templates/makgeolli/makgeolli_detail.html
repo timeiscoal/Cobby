@@ -1,150 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css"
-    />
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
-      body {
-        background: #fafafa;
-      }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-      ol,
-      ul {
-        list-style: none;
-      }
+    body {
+      background: #fafafa;
+    }
 
-      p,
-      span,
-      div,
-      a {
-        font-family: sans-serif;
-      }
+    ol,
+    ul {
+      list-style: none;
+    }
 
-      button {
-        border: none;
-      }
+    p,
+    span,
+    div,
+    a {
+      font-family: sans-serif;
+    }
 
-      a {
-        color: #000;
-        text-decoration: none;
-      }
+    button {
+      border: none;
+    }
 
-      button {
-        background: none;
-        cursor: pointer;
-      }
+    a {
+      color: #000;
+      text-decoration: none;
+      padding: 1rem;
+    }
 
-      h1 {
-        color: #262626;
-        font-family: "Lobster", cursive;
-        font-weight: 100;
-        line-height: 1;
-      }
+    button,
+    i {
+      background: none;
+      cursor: pointer;
+    }
 
-      input,
-      textarea {
-        outline: none;
-      }
+    h1 {
+      color: #262626;
+      font-family: "Lobster", cursive;
+      font-weight: 100;
+      line-height: 1;
+    }
 
-      .comments {
-        margin: auto;
-        justify-content: center;
-      }
+    input,
+    textarea {
+      outline: none;
+    }
 
-      .txt_id {
-        font-size: 1.3rem;
-        font-weight: bold;
-        margin: 0.5rem 1rem 0.5rem 0;
-      }
-      .col{
-        
-      }
-    </style>
-  </head>
-  <body>
-    <div style="width: 80%" class="container">
-      <div class="row fs-1">
-        <p>{{ makgeolli.name }}막걸리</p>
+    .comments {
+      margin: auto;
+      justify-content: center;
+    }
+
+    .txt_id {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin: 0.5rem 1rem 0.5rem 0;
+    }
+
+    .form-control {
+      width: 20rem;
+    }
+
+    .nav {
+      background-color: rgb(199, 199, 199);
+      height: 80px;
+      width: 100%;
+      display: flex;
+      align-content: center;
+      justify-content: space-between;
+    }
+    .sign_div{
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      align-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <a href="/">Home</a>
+    <div class="sign_div">
+      {% if user.is_authenticated %}
+      <a href="{% url 'user:logout' %}">{{ user.username }} (로그아웃)</a>
+      {% else %}
+      <a href="{% url 'user:login' %}">로그인</a>
+      {% endif %}
+    </div>
+  </div><!-- nav div end -->
+
+  <div style="width: 80%;" class="container">
+    <div class="row fs-1" style="padding: 2rem 0 1rem;">
+      <p>{{ makgeolli.name }}막걸리</p>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto">
+        <img style="max-width: 80%" class="rounded img-responsive mx-auto d-block" src="{{ makgeolli.image.url }}"
+          alt="{{ makgeolli.name }}" />
       </div>
-      <div class="row justify-content-md-center">
-        <div class="col-md-auto">
-          <img
-            style="max-width: 80%"
-            class="rounded img-responsive mx-auto d-block"
-            src="{{ makgeolli.image.url }}"
-            alt="{{ makgeolli.name }}"
-          />
-        </div>
+    </div>
+    <div class="row">
+      <br />
+    </div>
+    <div class="row fs-5">
+      <div class="col">
+        <p>{{ makgeolli.desc }}</p>
       </div>
-      <div class="row">
-        <br />
-      </div>
-      <div class="row fs-5">
-        <div class="col">
-          <p>
-            영일만친구 막걸리 <지역 : 경상북도 : 포항시> <p>영일만친구 막걸리 정보
-            '영일만친구 막걸리'는 경북 포항을 대표하는 우리쌀로 빚은 막걸리이다.
-            대중가요 '영일만친구'로도 유명한 영일만은 포항을 상징적으로 나타내는
-            지명이기도 하다. '영일만친구 막걸리'는 포항시청에서 브랜드를 만들고,
-            포항공대에서 연구개발하고, 동해명주에서 생산한 제품으로 관청과 학계,
-            그리고 산업이 협력하여 스타 브랜드를 만든 대표적인 성공사례이기도
-            하다. 100% 포항쌀로 빚고 식유섬유가 풍부한 우뭇가사리가 첨가된
-            제품이다. </p>
-            <hr>
-            <h2>영일만친구 막걸리 특징</h2> 
-            <p>1. 식이섬유 풍부한 웰빙막걸리, 영일만친구 '영일만친구
-            막걸리'는 우뭇가사리를 매우 작은 입자로 분쇄하여 막걸리를 빚을 때
-            첨가해 식이섬유의 함량을 강화하였다. 한천이라고 불리는 우뭇가사리는
-            소화를 돕고 막걸리의 칼로리 양을 크게 떨어뜨려 다이어트에도 효과가
-            있는 특징이 있다. 또한 포항시 최초로 국가지정 술품질인증을 획득한
-            제품으로 맛과 품질에서 우수한 제품으로 포항시를 대표하는 막걸리로
-            사랑받고 있다.</p> <p>2. 포항을 넘어 세계적인 막걸리 생산을 위한
-            연구개발 '영일만친구 막걸리'는 포항의 지역쌀 소비촉진을 위해 2009년
-            포스텍과 포항테크노파크에 막걸리 개발을 의뢰하여 공동개발하게 된
-            제품이다. 학계, 연구계, 산업계, 그리고 지자체 각계의 전문가들이 모여
-            우뭇가사리를 이용한 명품 막걸리 개발에 착수한 후 탄생한 막걸리이다.</p>
-            <p>3. 1955년 설립된 포항에서 가장 오래된 양조장 제조사
-            '동해명주'는 1955년 마을이름인 도구리에서 '도구양조장'으로 출발하여
-            동해양조장에서 현재 동해명주가 되기까지 60여년이 넘는 세월 동안 오직
-            막걸리만을 제조하여온 유서 깊은 막걸리의 명가이다. 양조장의 오랜
-            역사는 바로 양조장에서 생산하는 제품이 그 만큼 소비자에게 오래도록
-            사랑 받았다는 반증이기도 하다. 동해명주의 막걸리는 오래 두고 만나고
-            보고싶은 친구같은 술이다. 영일만친구 막걸리 맛과 어울리는 음식
-            동해명주에서 나오는 동해동동주, 도구 막걸리 그리고 영일만 친구는
-            비슷한 맛을 가지고 있지만 특징이 하나씩 있다. 동해동동주는 쌀알이
-            동동 뜨는 모습, 도구 막걸리는 쌀과 함께 밀가루를 첨가하였으며,
-            영일만 친구는 우뭇가사리를 넣은 술이다. 우뭇가사리의 풍부한
-            식이섬유를 함께 마시는 즐거움이 있다. 역시 우뭇가사리 무침과 잘
-            어울린다.</p>
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <hr />
-      </div>
+    </div>
+    <div class="row">
+      <hr />
+    </div>
 
 
-        <!--#################################-->
        
         {% for comment in makgeolli.comment_set.all %}
         <div class="comments">
@@ -154,12 +138,14 @@
                         <a href="#n" class="txt_id"> {{comment.author}} </a>
                         <span>{{comment.content}}</span>
                     </span>
+                    {% if comment.author == request.user %}
                     <div class="bi bi-pencil-square" style="color: green; margin-left: 1rem;" onclick="location.href='{% url 'post:comment_edit' comment.id %}';">
                         <method="POST">
                             {% csrf_token %}
                     </div>
                     <i style="color: red; margin-left: 1rem;"class="bi bi-x-square" onclick="location.href='{% url 'post:delete' comment.id %}';"></i>
                     </p>
+                    {% endif %}
             </div>
         </div><!-- comments div end -->
         {% endfor %}
@@ -190,8 +176,24 @@
         >
           작성
         </button>
+
+
       </div>
+    </div><!-- comments div end -->
+    {% endfor %}
+    <div class="input-group mb-3">
+      <form class="d-flex" action="{% url 'post:create_comment' makgeolli.id %}" method="POST">
+        {% csrf_token %}
+        <input name="content" type="text" class="form-control" placeholder="댓글을 입력해주세요."
+          aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">작성</button>
+      </form>
+
     </div>
-    <!-- container div end -->
-  </body>
+  </div>
+  <!-- comments div end -->
+  </div>
+  <!-- container div end -->
+</body>
+
 </html>

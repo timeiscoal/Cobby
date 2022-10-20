@@ -6,11 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        a {
+            color: black;
+            text-decoration: none;
+        }
+        .nav {
+            background-color: rgb(199, 199, 199);
+            height: 80px;
+            width: 100%;
+            display: flex;
+            align-content: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+          }
+        .nav_a{
+            padding: 1rem;
+        }
+        .nav > a:first-child{
+            margin-right: auto;
+        }
+        .sign_div {
+            width: fit-content;
+            height: fit-content;
+            display: flex;
+            align-content: center;
+            padding: 1rem;
+        }
+        .card-img-top {
+            width: 100%;
+            height: 18rem;
+            overflow: hidden;
+        }
+        .container {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: baseline;
+        }
+        .card {
+            width: 20%;
+            height:fit-content;
+            overflow: hidden;
+            margin: 2rem;
+        }
+    </style>
 </head>
 <body>
+    <div class="nav">
+        <a class="nav_a" href="/">Home</a>
+        <a class="nav_a" href="{% url 'makgeolli:makgeolli'%}">막걸리들</a>
+        <div class="sign_div">
+            {% if user.is_authenticated %}
+            <a href="{% url 'user:logout' %}">{{ user.username }} (로그아웃)</a>
+            {% else %}
+            <a href="{% url 'user:login' %}">로그인</a>
+            {% endif %}
+        </div>
+      </div><!-- nav div end -->
+    
     <div class="container">
         {% for makgeolli in makgeolli_list %}
-        <div class="card" style="width: 18rem;">
+        <div class="card">
             <img src="{{ makgeolli.image.url }}" class="card-img-top" alt="{{ makgeolli.name }}">
             <div class="card-body">
                 <h5 class="card-title">{{ makgeolli.name }}</h5>
