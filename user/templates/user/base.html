@@ -107,6 +107,20 @@
       border: 1px solid black;
       cursor: pointer;
     }
+    .error{
+      width: 450px;
+      height: 50px;
+      position: absolute;
+      top: 85%;
+      left: 34.5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 1rem;
+      background-color: rgb(255, 100, 100);
+      color: white;
+      margin: 1rem 0;
+    }
   </style>
   <body>
     <div class="ui">
@@ -149,6 +163,12 @@
     <div class="img_box"><div id="image_container"></div></div>
     <button type="submit" class="upload_btn">업로드</button>
   </form>
+  {% if error %}
+  <div class="error">
+    <p>{{ error }}</p>
+  </div>
+  {% endif %}
+
   </body>
 
   <script>

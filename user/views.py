@@ -63,3 +63,5 @@ def upload(request):
         for mak in mak_list:
             if mak.name in name:
                 return redirect(f'/makgeolli/{mak.id}')
+        else:
+            return render(request, 'user/base.html', {'error':"다른 이미지 파일을 업로드 해주세요."})
