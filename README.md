@@ -32,6 +32,27 @@
 ## 4. 📂 주요 기능. <a href="https://github.com/timeiscoal/Cobby/wiki/1.-%EA%B8%B0%EB%8A%A5"> 상세보기</a>
 <br>
 
+### 주요 기능 미리보기
+
+- 이미지로 검색하기
+
+---
+<img src="https://user-images.githubusercontent.com/113073492/196952215-93081115-6d2c-4a43-a69c-812f8cc6e2e4.gif">
+<br>
+
+- 파일 선택에서 내가 알고 싶은 막걸리 사진을 선택한 후 업로드 버튼을 클릭합니다.
+
+<br>
+<img src="https://user-images.githubusercontent.com/113073492/196952209-c0f135ae-f6f9-4b76-846c-88470daa1108.gif">
+<br>
+
+- 머신 러닝 라이브러리를 통해서 이미지 속 텍스트를 인식하여 해당 막걸리 페이지로 이동합니다.
+
+<br>
+
+### 📂 주요기능
+---
+
 **1) 회원가입 / 로그인** 
   - 신규 계정 생성.
   - 로그인.
@@ -49,5 +70,6 @@
 
 <br>
 
-## 5.🛠️ 이렇게 문제 해결했어요.  <a href="https://github.com/timeiscoal/Cobby/wiki/2.-%E2%9A%A0%EF%B8%8F%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85">상세보기</a>
+## 5.🛠️ 트러블 이슈 
+이렇게 문제 해결했어요.  <a href="https://github.com/timeiscoal/Cobby/wiki/2.-%E2%9A%A0%EF%B8%8F%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85">상세보기</a>
 
