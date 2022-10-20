@@ -8,4 +8,6 @@ urlpatterns = [
     path('makgeolli/', views.makgeolli, name='makgeolli'),
     path('makgeolli/<int:id>', views.makgeolli_detail, name='detail'),
 
+
 ]
+
