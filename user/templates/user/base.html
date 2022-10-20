@@ -103,13 +103,17 @@
         <button class="button1">검색</button>
 
         <div class="form-group">
-          <input
-            class="form-control form-control-user"
-            type="file"
-            name="product_image"
-            id="product_image"
-            onchange="setThumbnail(event);"
-          />
+          <form action="{% url 'user:upload' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input
+              class="form-control form-control-user"
+              type="file"
+              name="product_image"
+              id="product_image"
+              onchange="setThumbnail(event);"
+            />
+            <button type="submit">업로드</button>
+          </form>
         </div>
       </div>
 

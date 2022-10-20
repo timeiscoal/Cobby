@@ -7,6 +7,6 @@ urlpatterns = [
     # 221018 최해민 Makgeolli url 추가
     path('makgeolli/', views.makgeolli, name='makgeolli'),
     path('makgeolli/<int:id>', views.makgeolli_detail, name='detail'),
-    path('cobby/', views.cobby, name='cobby'),
+    path('cobby/<str:img>', views.cobby, name='cobby'),
 
 ]
